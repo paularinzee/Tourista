@@ -56,3 +56,53 @@ A RESTful API for managing tours, reviews, and users built with **Express** and 
 
 6. **Verify the API is running**: You can test the API using tools like Postman or Insomnia to make sure it's up and running. Try accessing http://localhost:3000 to verify.
 
+## API Endpoints
+
+### Authentication
+- **POST** /signup - Register a new user
+- **POST** /login - Login and get a JWT token
+- **POST** /forgotPassword - Request a password reset
+- **PATCH** /resetPassword/:token - Reset the password with the reset token
+- **User** Routes
+- **GET** /me - Get the logged-in user's details
+- **PATCH** /updateMe - Update the user's details (except password)
+- **DELETE** /deleteMe - Delete the logged-in user
+- **GET** /users - Get all users (admin only)
+- **GET** /users/:id - Get user by ID (admin only)
+- **PATCH** /users/:id - Update user by ID (admin only)
+- **DELETE** /users/:id - Delete user by ID (admin only)
+### Tour Routes
+- **GET** /top-5-cheap - Get top 5 cheapest tours
+- **GET** /tour-stats - Get tour statistics
+- **POST** / - Create a new tour
+- **GET** /distances/:latlng/unit/:unit - Calculate the distance from a point to the tours
+- **GET** /tours-within/:distance/center/:latlng/unit/:unit - Get tours within a given distance of a point
+- **GET** /tours/:id - Get a single tour by ID
+- **PATCH** /tours/:id - Update a tour by ID
+- **DELETE** /tours/:id - Delete a tour by ID
+### Review Routes
+- **GET** /reviews - Get all reviews for a tour
+- **POST** /reviews - Create a new review for a tour
+- **PATCH** /reviews/:id - Update a review
+- **DELETE** /reviews/:id - Delete a review
+
+
+## Running the App Locally
+To run the app locally, follow the installation steps above. You can use tools like Postman or Insomnia to test the API endpoints.
+
+## Technologies
+- **Node.js** - JavaScript runtime
+- **Express** - Web framework for Node.js
+- **MongoDB** - NoSQL database for storing data
+- **JWT (JSON Web Token)** - Authentication mechanism
+- **MailTrap** (optional) - Email service for sending emails (e.g., for password reset)
+
+
+## Environment Variables
+The application requires the following environment variables:
+
+- JWT_SECRET: Secret key for signing JWT tokens
+- JWT_EXPIRES_IN**: Expiration time for JWT tokens (e.g., "1h")
+- JWT_COOKIE_EXPIRES_IN: Expiration time for JWT cookie in days
+- SENDGRID_API_KEY: API key for SendGrid (optional)
+- MONGO_URI: MongoDB connection URI
